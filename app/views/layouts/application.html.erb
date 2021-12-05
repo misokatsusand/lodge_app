@@ -5,12 +5,74 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <!-- ヘッダーナビゲーションバー -->
+    <header>
+      <nav class="navbar navbar-expand-xl navbar-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Lodge share</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <!-- 検索フォーム -->
+            <%= form_with url:"/rooms/index", class:"d-flex me-auto mb-2 mb-md-0" do |f| %>
+              <div class="area-search search">
+                <%= f.text_field :search_area, placeholder:"エリア", value:@area, class:"form-control" %>
+              </div>
+              <div class="keyword-search search">
+                <%= f.text_field :search_keyword, placeholder:"キーワード", value:@keyword, class:"form-control" %>
+              </div>
+              <%= f.submit "Search", class: "btn btn-info" %>
+            <% end %>
+            <!-- ログイン状況で表示を分ける -->
+            <% if @current_user %>
+              <p class="nav-username"><%= @current_user.name %>でログイン中</p>
+            <% end %>
+            <ul class="navbar-nav">
+              <% if @current_user %>
+                <li class="nav-item">
+                  <%= link_to "ルーム登録", "/rooms/new", class:"nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "登録済ルーム", "/rooms/owned_room", class:"nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "予約済ルーム", "/books/index", class:"nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "設定", "/users/profile", class:"nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", "/users/logout", method:"post" ,class:"nav-link" %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to "ログイン", "/users/login_form", class:"btn btn-primary me-2"%>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "新規登録", "/users/new", class:"btn btn-secondary me-2"%>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="spacer"></div>
+    <!-- ポップアップ情報 -->
+    <% if flash[:notice] %>
+      <div class="alert alert-success" role="alert">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
     <%= yield %>
+    <footer>
+      <p>Copyright</p>
+    </footer>
   </body>
 </html>

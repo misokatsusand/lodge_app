@@ -1,0 +1,96 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ body{
+   background-color: #eee;
+ }
+ .spacer{
+   margin-top: 56px;
+ }
+ //////////////
+ // ヘッダー //
+ //////////////
+nav{
+   background-color: #2f2f2f;
+ }
+.search {
+  position: relative;
+  width: 150px;
+  margin-right: 7px;
+  &::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+  }
+  input{
+    height:100%;
+    padding: 3px 0 3px 2em;
+  }
+}
+.area-search{
+  &::before {
+    background: url("./00652-tmb.png") no-repeat center center / auto 100%;
+    top: 2px;
+    left: 1px;
+    width: 32px;
+    height: 32px;
+  }
+}
+.keyword-search{
+  &::before {
+    background: url("./icon_108190.svg") no-repeat center center / auto 100%;
+    top: 11px;
+    left: 10px;
+    width: 16px;
+    height: 16px;
+  }
+}
+.nav-username{
+  color: #ddd;
+  padding: 10px 10px 10px 0;
+  height: 20px;
+  line-height: 1.1;
+}
+//////////////////
+// flash_notice //
+//////////////////
+.alert{
+  text-align: center;
+  height: 30px;
+  line-height: 0.1;
+  margin-bottom: 0;
+}
+.error{
+  padding: 0px 10px;
+  text-align: center;
+  li{
+    list-style: none;
+    color: #dd0000;
+  }
+}
+//////////////
+// フッター //
+//////////////
+footer{
+  background-color: #2f2f2f;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  p{
+    display: inline-block;
+    margin: auto;
+    color: #ddd;
+  }
+}

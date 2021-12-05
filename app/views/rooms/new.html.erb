@@ -1,0 +1,20 @@
+<div class="form-login">
+  <h1>新しいルームを作成</h1>
+  <!--エラーメッセージの取得-->
+  <%= render "shared/error", obj: @room %>
+  <!--rooms_createメソッドへのフォーム-->
+  <%= form_for @room do |f| %>
+    <%= f.label :name ,"ルーム名" %>
+    <%= f.text_field :name, class: "form-control", placeholder:"ルーム名を入力", :required => true, autofocus: true %>
+    <%= f.label :comment ,"ルーム紹介" %>
+    <%= f.text_area :comment, class:"form-control", placeholder:"ルーム説明を入力", :required => true %>
+    <%= f.label :price_per_day_and_person ,"料金" %>
+    <%= f.number_field :price_per_day_and_person, class: "form-control", placeholder:"1日あたりの料金を入力(円)", :required => true %>
+    <%= f.label :area ,"住所" %>
+    <%= f.text_field :area, class: "form-control", placeholder:"住所を入力", :required => true %>
+    <%= f.label :room_image ,"ルーム画像"%>
+    <%= f.file_field :room_image, class: "form-control" %>
+    <%= f.hidden_field :user_id, value:@current_user.id %>
+    <%= f.submit "登録", class:"w-100 btn btn-lg btn-primary mt-3" %>
+  <% end %>
+</div>

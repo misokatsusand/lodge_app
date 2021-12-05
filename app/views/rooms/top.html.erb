@@ -1,0 +1,51 @@
+<!-- ファーストビュー -->
+<div class="top_wrap">
+  <div class="top-image">
+    <div class="row h-100">
+      <div class="col-sm-1 col-1"></div>
+      <div class="col-sm-7 col-10 form_tidy">
+        <div class="form_wrap">
+          <div class="form_contents">
+            <h3>誰でも、気軽に、民宿。</h3>
+            <%= form_with url:"/rooms/index" do |f| %>
+              <p>気になる場所を調べてみましょう</p>
+              <%= f.label :search_area, "エリア" %>
+              <%= f.text_field :search_area, placeholder:"東京", class:"form-control" %>
+              <%= f.submit "探す", class:"w-100 btn btn-lg btn-primary mt-3" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-1"></div>
+    </div>
+  </div>
+  <div class="top-contents">
+    <h3>おすすめのエリア</h3>
+      <div class="row">
+        <div class="area_item col-md-3 col-sm-6">
+          <span>東京</span>
+          <%= link_to rooms_index_url(search_area: "東京"),method: :post do %>
+            <img src="../top_images/pakutaso2.jpg" alt="東京 フリー写真素材ぱくたそ">
+          <% end %>
+        </div>
+        <div class="area_item col-md-3 col-sm-6">
+          <span>大阪</span>
+          <%= link_to rooms_index_url(search_area: "大阪"),method: :post do %>
+            <img src="../top_images/adDSC_1458.jpg" alt="大阪">
+          <% end %>
+        </div>
+        <div class="area_item col-md-3 col-sm-6">
+          <span>京都</span>
+          <%= link_to rooms_index_url(search_area: "京都"),method: :post do %>
+            <img src="../top_images/adpDSC_3318.jpg" alt="京都">
+          <% end %>
+        </div>
+        <div class="area_item col-md-3 col-sm-6">
+          <span>札幌</span>
+          <%= link_to rooms_index_url(search_area: "札幌"),method: :post do %>
+            <img src="../top_images/pakutaso3.jpg" alt="札幌 フリー写真素材ぱくたそ">
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>

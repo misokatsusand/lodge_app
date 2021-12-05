@@ -1,0 +1,24 @@
+<div class="roomlist_contents card_contents">
+  <h1>ルーム一覧の検索結果：<%= @rooms.size %>件</h1>
+  <!-- 検索結果をカード表示 -->
+  <div class="row">
+    <% @rooms.each do |room| %>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card_wrap">
+          <%= link_to "/rooms/#{room.id}" do %>
+            <div class="card">
+              <img src="/room_images/<%= room.image_name %>" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card_roomname"><%= room.name %></h5>
+                <p class="card_area"><%= room.area %></p>
+                <p class="card_price">¥ <%= room.price_per_day_and_person %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <!-- kaminariによるページング -->
+    <%= paginate @rooms %>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="room_contents">
+  <div class="row">
+    <div class="room_image col-md-9">
+      <img src="/room_images/<%= @room.image_name %>">
+    </div>
+    <div class="reservation col-md-3">
+      <div class="room_container">
+        <h3>¥ <%= @room.price_per_day_and_person %> / 日</h3>
+        <!-- rooms_return_confirmメソッドへのフォーム -->
+        <!-- 未ログインの場合はログイン及び新規登録を表示 -->
+        <% if @current_user %>
+          <%= form_with model: @book, url:"/rooms/#{@room.id}/return_confirm" do |f| %>
+            <%= f.label :start ,"開始日", class:"form_text" %>
+            <%= f.date_field :start, class: "form-control", :required => true %>
+            <%= f.label :end ,"終了日", class: "form_text" %>
+            <%= f.date_field :end, class:"form-control", :required => true %>
+            <%= f.label :number_of_people ,"人数", class:"form_text" %>
+            <%= f.number_field :number_of_people, class: "form-control", :required => true %>
+            <%= f.hidden_field :user_id, value:@current_user.id  %>
+            <%= f.hidden_field :room_id, value:@room.id  %>
+            <%= f.submit "予約する", class:"w-100 btn btn-lg btn-primary mt-3" %>
+          <% end %>
+        <% else %>
+          <h5>予約をする場合は</h5>
+          <%= link_to "ログイン", "/users/login_form", class:"btn btn-primary me-2"%>
+          <h5>もしくは</h5>
+          <%= link_to "新規登録", "/users/new", class:"btn btn-secondary me-2"%>
+          <h5>をしてください</h5>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="room_info">
+    <img src="/user_images/<%= @room.user.icon_name %>">
+    <div class="room_name-area">
+      <h3><%= @room.name %></h3>
+      <p><%= @room.area %></p>
+    </div>
+  </div>
+  <div class="room_comment">
+    <p><%= @room.comment %></p>
+  </div>
+</div>

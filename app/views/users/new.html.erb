@@ -1,0 +1,25 @@
+<!-- ログイン-登録切り替えボタン -->
+<div class="row toggle_account_profile">
+  <%= link_to "ログイン", "/users/login_form", class:"btn btn-secondary col" %>
+  <button class="btn btn-primary col">新規登録</button>
+</div>
+<div class="form-login">
+  <h1>新しいアカウントを作成</h1>
+  <!--エラーメッセージの取得-->
+  <%= render "shared/error", obj: @user %>
+  <!--users_createメソッドへのフォーム-->
+  <%= form_for @user do |f| %>
+    <%= f.label :name ,"ユーザー名", class:"visually-hidden" %>
+    <%= f.text_field :name, class: "form-control", placeholder:"ユーザー名(必須)", :required => true, autofocus: true %>
+    <%= f.label :email ,"メールアドレス", class: "visually-hidden" %>
+    <%= f.text_field :email, class:"form-control", placeholder:"メールアドレス(必須)", :required => true %>
+    <%= f.label :password ,"パスワード", class:"visually-hidden" %>
+    <%= f.text_field :password, class: "form-control", placeholder:"パスワード(必須)", :required => true %>
+    <%= f.label :password_confirmation ,"パスワードの確認", class:"visually-hidden" %>
+    <%= f.text_field :password_confirmation, class: "form-control", placeholder:"パスワードの確認(必須)", :required => true %>
+    <!-- 初期アイコンセット -->
+    <%= f.hidden_field :icon_name, value:"default.jpg" %>
+    <%= f.submit "新しいアカウントを作成", class:"w-100 btn btn-lg btn-primary mt-3" %>
+  <% end %>
+  <%= link_to "すでにアカウントをお持ちの方→ログイン", "/users/login_form" %>
+</div>

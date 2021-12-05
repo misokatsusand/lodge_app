@@ -1,0 +1,25 @@
+<!-- アカウント-プロフィール切り替えボタン -->
+<div class="row toggle_account_profile">
+  <%= link_to "アカウント", "/users/account", class:"btn btn-secondary col" %>
+  <a class="btn btn-primary col">プロフィール</a>
+</div>
+<div class="form-login">
+  <!--エラーメッセージの取得-->
+  <%= render "shared/error", obj: @user %>
+  <h1>プロフィール編集</h1>
+  <div class="profile_icon">
+    <p>現在のアイコン画像</p>
+    <img src="/user_images/<%= @user.icon_name %>">
+  </div>
+  <!--users_profile_updateメソッドへのフォーム-->
+  <%= form_with url:"/users/profile_update" do |f| %>
+    <%= f.label :icon_image ,"アイコン画像"%>
+    <%= f.file_field :icon_image, class: "form-control" %>
+    <%= f.label :name ,"名前"%>
+    <%= f.text_field :name, class: "form-control", value:@user.name, placeholder:"名前を入力" %>
+    <%= f.label :introduce ,"自己紹介"%>
+    <%= f.text_area :introduce, class: "form-control", value:@user.introduce, placeholder:"自己紹介を入力", :required => true %>
+    <%= f.submit "更新", class:"w-100 btn btn-lg btn-primary mt-3" %>
+  <% end %>
+  <%= link_to "戻る", "/", class:"btn btn-secondary"%>
+</div>

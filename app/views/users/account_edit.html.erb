@@ -1,0 +1,23 @@
+<!-- アカウント-プロフィール切り替えボタン -->
+<div class="row toggle_account_profile">
+  <button class="btn btn-primary col">アカウント</button>
+  <%= link_to "プロフィール", "/users/profile", class:"btn btn-secondary col" %>
+</div>
+<div class="form-login">
+  <!--エラーメッセージの取得-->
+  <%= render "shared/error", obj: @user %>
+  <h1>アカウント編集</h1>
+  <!--users_account_updateメソッドへのフォーム-->
+  <%= form_with url:"/users/account_update" do |f| %>
+    <%= f.label :email ,"メールアドレス" %>
+    <%= f.text_field :email, class:"form-control", value:@user.email, :required => true, autofocus: true %>
+    <%= f.label :password ,"変更後パスワード"%>
+    <%= f.text_field :password, class: "form-control", placeholder:"変更する場合のみ入力してください" %>
+    <%= f.label :password_confirmation ,"変更後パスワードの確認"%>
+    <%= f.text_field :password_confirmation, class: "form-control", placeholder:"変更する場合のみ入力してください" %>
+    <%= f.label :password_old ,"現在のパスワード"%>
+    <%= f.text_field :password_old, class: "form-control", placeholder:"更新の際は入力してください", :required => true %>
+    <%= f.submit "更新", class:"w-100 btn btn-lg btn-primary mt-3" %>
+  <% end %>
+  <%= link_to "戻る", "/", class:"btn btn-secondary"%>
+</div>

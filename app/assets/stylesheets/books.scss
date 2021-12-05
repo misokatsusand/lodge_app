@@ -1,0 +1,99 @@
+////////////////////////
+// 予約確定前確認画面 //
+////////////////////////
+.form-confirm{
+  padding:30px;
+  width:90%;
+  max-width:500px;
+  margin:10px auto;
+  h1{
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  h2{
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+  p{
+    margin: 10px 0 5px 0;
+  }
+  .form-control{
+    background-color: #ddd;
+  }
+  a{
+    display: inline-block;
+    width:100%;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.25rem;
+  }
+}
+.underline{
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+//////////////////
+// 予約完了画面 //
+//////////////////
+.book_contents{
+  padding:30px;
+  width:90%;
+  max-width:800px;
+  margin:10px auto;
+}
+.info_row{
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.info_title{
+  border-right: 3px solid #0dcaf0;
+  float:left;
+  display: inline-block;
+  width: 150px;
+  margin-right: 10px;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+.info_data{
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+////////////////////////
+// 予約済ルームリスト //
+////////////////////////
+.booklist_contents{
+  padding: 30px;
+  width: 95%;
+  max-width: 1300px;
+  min-width: 800px;
+  margin: 10px auto;
+  h1{
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  td{
+    position: relative;
+    height:130px;
+    a, p{
+      position: absolute;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      font-size: 1.1rem;
+    }
+    p{
+      font-size: 1rem;
+    }
+  }
+  .image_column{
+    width:200px;
+  }
+}
+.booklist_image{
+  width: 185px;
+  height: 125px;
+  padding-bottom: 7px;
+}

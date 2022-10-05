@@ -1,0 +1,33 @@
+<!-- 予約情報確認ページ -->
+<div class="book_contents">
+  <div class="info_row">
+    <h3 class="info_title">予約した部屋</h3>
+    <div class="info_data">
+      <%= @book.room.name %>
+    </div>
+  </div>
+  <div class="info_row">
+    <h3 class="info_title">開始日</h3>
+    <div class="info_data">
+      <%= @book.start.to_s(:datetime_jp) %>
+    </div>
+  </div>
+  <div class="info_row">
+    <h3 class="info_title">終了日</h3>
+    <div class="info_data">
+      <%= @book.end.to_s(:datetime_jp) %>
+    </div>
+  </div>
+  <div class="info_row">
+    <h3 class="info_title">予約人数</h3>
+    <div class="info_data">
+      <%= @book.number_of_people %> 人
+    </div>
+  </div>
+  <div class="info_row">
+    <h3 class="info_title">合計金額</h3>
+    <div class="info_data">
+      ¥ <%= @book.total_price %>
+    </div>
+  </div>
+</div>

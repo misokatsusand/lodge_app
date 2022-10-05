@@ -1,0 +1,31 @@
+<div class="form-confirm">
+  <h1 class="underline">予約内容確認</h1>
+  <h2>¥ <%= @book.room.price_per_day_and_person %> / 日</h2>
+  <p>開始日</p>
+  <div class="form-control">
+    <%= @book.start.to_s(:datetime_jp) %>
+  </div>
+  <p>終了日</p>
+  <div class="form-control">
+    <%= @book.end.to_s(:datetime_jp) %>
+  </div>
+  <p class="underline">使用日数：<%= @book.days %> 日</p>
+  <p class="underline">人数：<%= @book.number_of_people %> 人</p>
+  <p>合計金額</p>
+  <div class="form-control">
+    ¥ <%= @book.total_price %>
+  </div>
+  <p class="underline">上記内容でよろしければ「予約を確定」を押してください</p>
+  <!--books_createメソッドへのフォーム-->
+  <%= form_for @book do |f| %>
+    <%= f.hidden_field :start, class: "form-control", value:@book.start %>
+    <%= f.hidden_field :end, class:"form-control", value:@book.end %>
+    <%= f.hidden_field :days, class: "form-control", value:@book.days %>
+    <%= f.hidden_field :number_of_people, class: "form-control", value:@book.number_of_people %>
+    <%= f.hidden_field :total_price, class: "form-control", value:@book.total_price %>
+    <%= f.hidden_field :user_id, value:@book.user_id  %>
+    <%= f.hidden_field :room_id, value:@book.room_id  %>
+    <%= f.submit "予約を確定", class:"w-100 btn btn-lg btn-primary mt-3" %>
+  <% end %>
+  <%= link_to "ルーム詳細に戻る", "/rooms/#{params[:id]}", class:"btn btn-secondary"%>
+</div>

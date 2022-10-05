@@ -1,0 +1,51 @@
+////////////////////////////////
+// ログイン・新規登録フォーム //
+////////////////////////////////
+.form-login{
+  padding:30px;
+  width:90%;
+  max-width:380px;
+  min-width: 280px;
+  margin:10px auto;
+  h1{
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  a{
+    display: inline-block;
+    width:100%;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.1rem;
+  }
+  .btn{
+    font-size: 1.1rem;
+  }
+  label{
+    margin-top: 10px;
+  }
+}
+//////////////////////////////////////////
+// アカウント・プロフィール更新フォーム //
+//////////////////////////////////////////
+.toggle_account_profile{
+  height:50px;
+  .btn{
+    height:100%;
+    border-radius: 0;
+    line-height: 2.1;
+  }
+}
+.profile_icon{
+  text-align: center;
+  img{
+    height:100px;
+    width:auto;
+  }
+}
+.profile_box{
+  height: 600px;
+  width:90%;
+  margin: auto;
+}

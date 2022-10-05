@@ -17,17 +17,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation))
-    @user.icon_name = "default.jpg"
+    @user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation, :icon_name))
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = 'ユーザーを新規登録しました'
       redirect_to "/"
     else
-      @name = params[:name]
-      @email = params[:email]
-      @password = params[:password]
-      @user = User.new
+      @name = params[:user][:name]
+      @email = params[:user][:email]
+      @password = params[:user][:password]
       render "users/new"
     end
   end

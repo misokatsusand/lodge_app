@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   #users_controller
   get 'users/index'
   get 'users/login_form'
